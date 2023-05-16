@@ -3,7 +3,6 @@ package com.codervibe.vue_login_server.service;
 import com.codervibe.vue_login_server.model.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Administrator on 2022/3/3  0003
@@ -17,8 +16,9 @@ public interface UserService {
     /**
      * 用户登录
      * @param user
+     *
      */
-    void userLogin(User user);
+  boolean userLogin(User user);
 
     /**
      * 用户注册方法

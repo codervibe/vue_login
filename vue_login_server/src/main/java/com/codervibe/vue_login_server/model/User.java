@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-import org.apache.ibatis.type.Alias;
 
 import java.util.Date;
 
@@ -39,10 +38,10 @@ public class User {
      */
     private String email;
 
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GTM+8")
     /**
      * 创建时间
      */
-//    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GTM+8")
     private Date createTime;
 
     /**

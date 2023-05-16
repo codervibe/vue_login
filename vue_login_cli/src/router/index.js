@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Index from '../components/index'
 import UserLogin from '../components/userLogin'
 import User from '../components/User'
-import Error from '../components/error'
+import Error from '../components/loginError'
 import UserRegister from '../components/userRegister'
 Vue.use(Router)
 

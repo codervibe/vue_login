@@ -8,7 +8,13 @@ spring:
     username: root
     password: admin
 server:
-  port: 8989
+  port: 8087
+  undertow:
+    io-threads: 16
+    worker-threads: 256
+    buffer-size: 1024
+    buffers-per-region: 1024
+    direct-buffers: true
   servlet:
     context-path: /vue_login
 mybatis:

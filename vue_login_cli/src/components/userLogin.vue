@@ -1,10 +1,10 @@
 <template>
   <div>
     <h1>用户登录</h1>
-    <form action="">
+    <form action="" v-on:keyup.enter="userLogin">
       用户名:<input v-model="user.username" type="text"><br>
       密&nbsp;&nbsp;&nbsp;码:<input v-model="user.password" type="password"><br>
-      <input type="button" @click="userLogin" value="登录">
+      <input type="button"  @click="userLogin" value="登录">
     </form>
     <router-view/>
   </div>
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     userLogin() {
-      const url = "http://localhost:8989/vue_login/user/login";
+      const url = "http://localhost:8087/vue_login/user/login";
       console.log("userLogin");
       console.log(this.user);
       this.$http.post(url, this.user).then(res => {
@@ -36,8 +36,22 @@ export default {
         console.log(res.data.success);
         if (res.data.success) {
           console.log("返回的信息");
+
           console.log(res.data.message);
+          console.log(res.data.success);
+          console.log(res.data.message.username)
+          console.log(res.data.username);
           this.$router.push("/login/user")
+          this.$router.push({
+            path: "/index",
+            query:{
+              message: res.data.message,
+              username: res.data.username
+            },
+            post:{
+              message:"1111111",
+            }
+          })
         } else {
           console.log("返回的信息");
           console.log(res.data.message);
@@ -59,11 +73,11 @@ export default {
   },
   watch: {
     $route: {
-      handler: function (val,oldVal) {
-        console.log(oldVal);
-        console.log(val);
-        console.log("由" + oldVal.path + "转换为新的路径" + val.path);
-        if (val.path == "/user") {
+      handler: function (path,oldpath) {
+        console.log(oldpath);
+        console.log(path);
+        console.log("由" + oldpath.path + "转换为新的路径" + path.path);
+        if (path.path == "/user") {
           this.findAll()
         }
       },

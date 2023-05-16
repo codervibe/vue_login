@@ -3,14 +3,20 @@
 <mapper namespace="com.codervibe.vue_login_server.Mapper.UserDao">
 
     <insert id="userRegister" parameterType="User" useGeneratedKeys="true" keyProperty="id">
-        insert into user(username,password,email,createTime,role) values (#{username}, #{password},#{email}, #{createTime}, #{role})
+        insert into user(username, password, email, createTime, role)
+        values (#{username}, #{password}, #{email}, #{createTime}, #{role})
     </insert>
 
-    <select id="userLogin" parameterType="User">
-        select username, password from user where username = #{username} and password = #{password}
+    <select id="userLogin" parameterType="User" resultType="User">
+        select username, password
+        from user
+        where username = #{username}
+          and password = #{password}
     </select>
 
     <select id="getUserById" parameterType="string" resultType="User">
-        select * from user where id = #{id}
+        select *
+        from user
+        where id = #{id}
     </select>
 </mapper>
